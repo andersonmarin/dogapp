@@ -48,7 +48,7 @@ class _BreedsDetailScreenState extends State<BreedsDetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('${widget.breed} | $offset'),
+        title: Text(widget.breed),
       ),
       body: FutureBuilder(
         initialData: [],
@@ -58,12 +58,14 @@ class _BreedsDetailScreenState extends State<BreedsDetailScreen> {
             return Center(child: CircularProgressIndicator());
           }
 
-          Future.delayed(
-            Duration(milliseconds: 100),
-            () => setState(() {
-              done = true;
-            }),
-          );
+          if (!done) {
+            Future.delayed(
+              Duration(milliseconds: 100),
+              () => setState(() {
+                done = true;
+              }),
+            );
+          }
 
           List<String> images = snapshot.data;
 
@@ -80,8 +82,9 @@ class _BreedsDetailScreenState extends State<BreedsDetailScreen> {
                   width: double.maxFinite,
                   child: FadeInImage.assetNetwork(
                     image: images[index],
-                    fit: BoxFit.fill,
+                    fit: BoxFit.cover,
                     placeholder: 'images/footprint.png',
+                    height: 256,
                   ),
                 ),
               );
