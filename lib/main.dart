@@ -9,7 +9,7 @@ class SmartMEIApp extends StatelessWidget {
     return MaterialApp(
         theme: ThemeData(
           primarySwatch: Colors.green,
-          accentColor: Colors.greenAccent,
+          accentColor: Colors.grey,
           buttonTheme: ButtonThemeData(
             buttonColor: Colors.green,
             textTheme: ButtonTextTheme.primary,
