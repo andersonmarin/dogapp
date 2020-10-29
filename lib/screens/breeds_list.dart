@@ -13,7 +13,7 @@ class _BreedsListState extends State<BreedsList> {
 
   ScrollController scrollController;
 
-  int offset = 20;
+  int limit = 20;
   bool loading = false;
   bool done = false;
 
@@ -31,7 +31,7 @@ class _BreedsListState extends State<BreedsList> {
   void more() {
     if (!loading) {
       setState(() {
-        offset += 10;
+        limit += 10;
         loading = true;
       });
       Future.delayed(Duration(seconds: 2), () {
@@ -66,8 +66,8 @@ class _BreedsListState extends State<BreedsList> {
           }
 
           List<String> breeds = snapshot.data;
-          if (breeds.length > offset) {
-            breeds = breeds.sublist(0, offset);
+          if (breeds.length > limit) {
+            breeds = breeds.sublist(0, limit);
           }
 
           return ListView.builder(

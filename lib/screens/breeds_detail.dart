@@ -15,7 +15,7 @@ class _BreedsDetailScreenState extends State<BreedsDetailScreen> {
 
   ScrollController scrollController;
 
-  int offset = 10;
+  int limit = 10;
   bool loading = false;
   bool done = false;
 
@@ -33,7 +33,7 @@ class _BreedsDetailScreenState extends State<BreedsDetailScreen> {
   void more() {
     if (!loading) {
       setState(() {
-        offset += 10;
+        limit += 10;
         loading = true;
       });
       Future.delayed(Duration(seconds: 2), () {
@@ -69,8 +69,8 @@ class _BreedsDetailScreenState extends State<BreedsDetailScreen> {
 
           List<String> images = snapshot.data;
 
-          if (images.length > offset) {
-            images = images.sublist(0, offset);
+          if (images.length > limit) {
+            images = images.sublist(0, limit);
           }
 
           return ListView.builder(
