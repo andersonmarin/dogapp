@@ -1,4 +1,4 @@
-# smartmei_app
+# dog_app
 
 A new Flutter project.
 
